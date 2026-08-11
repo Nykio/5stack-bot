@@ -1,4 +1,4 @@
-const t = process.env.DISCORD_TOKEN;
+const t = process.env.TOKEN;
 console.log('Longueur :', t?.length);
 console.log('Nb de points :', (t?.match(/\./g) || []).length);
 console.log('Début :', t?.slice(0, 10));
