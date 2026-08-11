@@ -188,8 +188,13 @@ function leaveStack(channelId, user) {
 // ─────────────────────────────────────────────
 //  EVENTS
 // ─────────────────────────────────────────────
-client.once('clientReady', () => {
-  console.log(`✅ Connecté en tant que ${client.user.tag}`);
+client.once('ready', () => {
+  console.log(`Connecté en tant que ${client.user.tag}`);
+
+  client.user.setPresence({
+    activities: [{ name: 'Valorant', type: ActivityType.Playing }],
+    status: 'online',
+  });
 });
 
 client.on('interactionCreate', async (interaction) => {
@@ -270,7 +275,7 @@ client.on('interactionCreate', async (interaction) => {
     scheduleExpiration(channelId);
 
     return interaction.reply({
-      content: '🎮 **Nouvelle 5 stack Valorant !** Qui rejoint ?',
+      content: '🎮 **Nouvelle 5 stack Valorant !**',
       embeds: [buildStackEmbed(stack)],
       components: [buildButtons(false)],
     });
